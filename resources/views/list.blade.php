@@ -15,6 +15,7 @@
                 <td>Address</td>
                 <td>City</td>
                 <td>Phone Number</td>
+                <td>Logo</td>
                 <td>Action</td>
             </tr>
 
@@ -25,6 +26,14 @@
                 <td>{{ $data->address}}</td>
                 <td>{{ $data->city }}</td>
                 <td>{{ $data->phone_number}}</td>
+                <td>
+                    <img
+                        src="{{ $data->client_logo }}"
+                        alt=""
+                        width="20"
+                        height="20"
+                    />
+                </td>
                 <td>
                     <a href="/edit/{{ $data->slug }}"><button>Edit</button></a
                     >&nbsp |

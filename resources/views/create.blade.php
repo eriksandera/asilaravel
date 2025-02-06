@@ -33,6 +33,11 @@
                     <td><input type="text" name="phone_number" /></td>
                 </tr>
                 <tr>
+                    <td>Client Logo</td>
+                    <td>:</td>
+                    <td><input type="text" name="client_logo" /></td>
+                </tr>
+                <tr>
                     <td colspan="3"><input type="submit" value="submit" /></td>
                 </tr>
             </table>

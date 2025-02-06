@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use App\Models\Client;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,10 @@ class ClientController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Validate the request...
-
+        $clientLogo = null;
+        if (!empty($request->client_logo)) {
+            $clientLogo = $request->client_logo;
+        }
         $client = DB::table('my_clients')->insertGetId([
             'name' => $request->name,
             'slug' => strtolower(str_replace(" ", "_", $request->name)),
@@ -34,7 +38,7 @@ class ClientController extends Controller
             'client_prefix' => '',
             'phone_number' => $request->phone_number,
             'city' => $request->city,
-
+            'client_logo' => $clientLogo
         ]);
 
         return redirect('/');
