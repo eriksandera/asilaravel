@@ -14,11 +14,8 @@ class ClientController extends Controller
     //
     public function index()
     {
-        // $client = new Client();
-        // $clients = $client->get();
         $clients = DB::table('my_clients')->get();
 
-        //dd($clients);
 
         return view('list', ['clients' => $clients]);
     }
@@ -44,14 +41,12 @@ class ClientController extends Controller
     }
     public function edit($id)
     {
-        //dd($id);
+
         $client = DB::table('my_clients')->where('slug', $id)->first();
-        //dd($client);
         return view('edit', ['client' => $client]);
     }
     public function update(Request $request): RedirectResponse
     {
-        //dd($request);
         $slug = strtolower(str_replace(" ", "_", $request->name));
         $client = DB::table('my_clients')->where('id', $request->id)->update([
             'name' => $request->name,
@@ -67,7 +62,6 @@ class ClientController extends Controller
     public function delete($id): RedirectResponse
     {
         $client = DB::table('my_clients')->where('slug', $id)->delete();
-        //dd($client);
         return redirect('/');
     }
 }
